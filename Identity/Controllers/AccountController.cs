@@ -68,28 +68,27 @@ namespace Identity.Controllers
         {
             return View();
         }
-        [HttpPost]
-        public async Task<IActionResult> CreateUser(CreateUserVM createUser)
-        {
-            IdentityUser user = new IdentityUser() { UserName = createUser.UserName, Email = createUser.Email };
-            var result = await _userManager.CreateAsync(user, createUser.Password);
-            if(result.Succed)
-            {
-                ViewBag.Msg = "User was succesful Created";
-                return RedirectToAction("CreateUser");
-            }
-            else
-            {
-                ViewBag.errorlist = result.Errors;
-            }
-            return View(createUser);
-        }
+        //[HttpPost]
+        //public async Task<IActionResult> CreateUser(CreateUserVM  createUser)
+        //{
+        //    IdentityUser user = new IdentityUser() { UserName = createUser.UserName, Email = createUser.Email };
+        //    var result = await _userManager.CreateAsync(user, createUser.Password);
+        //    if (result.Succed)
+        //    {
+        //        ViewBag.Msg = "User was succesful Created";
+        //        return RedirectToAction("CreateUser");
+        //    }
+        //    {
+        //        ViewBag.errorlist = result.Errors;
+        //    }
+        //    return View(createUser);
+        //}
         public IActionResult RoleList()
         {
             return View(_roleManger.Roles.ToList());
         }
-       [HttpGet]
-       public IActionResult AddRole()
+        [HttpGet]
+        public IActionResult AddRole()
         {
             return View();
         }
